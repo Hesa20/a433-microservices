@@ -1,0 +1,20 @@
+services:
+  # item-app service for application
+  item-app:
+    # build the image from Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    # execute the service after item-db service
+    depends_on:
+      - item-db
+    # restart policy
+    restart: always
+  # item-db service for database
+  item-db:
+    # image name
+    image: mongo:3
+    # restart policy
+    restart: always
