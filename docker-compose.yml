@@ -1,8 +1,10 @@
 services:
   # item-app service for application
   item-app:
+    # image name
+    image: hesa21/item-app:v1
     ports:
-      - "8080:80"
+      - "80:8080"
     # execute the service after item-db service
     depends_on:
       - item-db
@@ -14,3 +16,11 @@ services:
     image: mongo:3
     # restart policy
     restart: always
+    volumes:
+      - item-db:/data/db
+
+# volumes for persisting data
+volumes:
+  # volume for mongo data
+  item-db:
+    driver: local
