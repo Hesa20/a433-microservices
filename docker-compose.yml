@@ -17,10 +17,10 @@ services:
     # restart policy
     restart: always
     volumes:
-      - item-db:/data/db
+      - app-db:/data/db
 
 # volumes for persisting data
 volumes:
   # volume for mongo data
-  item-db:
+  app-db:
     driver: local
